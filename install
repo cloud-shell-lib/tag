@@ -1,0 +1,23 @@
+#!/bin/bash
+# 这个脚本负责下载和安装的逻辑
+
+# function lib
+lib=https://cdn.jsdelivr.net/gh/xaoxuu/shell-lib@v1
+# repository name
+REPO='release.sh'
+# clint file name
+CLIENT='release.sh'
+# download version
+VERSION=$1
+if [ "$VERSION" == "" ];then
+	VERSION='master'
+fi
+
+function on_success() {
+	doc_url=https://xaoxuu.com/wiki/${REPO}/
+	printf "\n> \033[32m恭喜您，安装成功！\033[0m已为您打开文档页面，请收藏这个页面，在您遇到问题的时候可以查看文档：\033[32m${doc_url}\033[0m\n\n"
+	open ${doc_url}
+}
+
+curl -s ${lib}/download.sh | sh -s ${REPO} ${VERSION} ${CLIENT} ./ &&
+chmod 777 ${CLIENT} && on_success
