@@ -1,6 +1,6 @@
-# release.sh
+# tag.sh
 
-> Publish your git releases swiftly and gently.
+> Publish your git tags swiftly and gently.
 
 ## Usage
 
@@ -8,20 +8,25 @@
 
 Open a terminal, enter and execute this command:
 
-`` `sh
-curl -s https://xaoxuu.com/install | sh -s release.sh
-`` `
+```sh
+curl -s https://xaoxuu.com/install | sh -s tag.sh
+```
 
 ### release version
 
 When you need to release a version, open a terminal in the git repository and enter:
 
-`` `sh
-release
-`` `
+```sh
+tag [version number] [commit message]
+```
 
-Then enter the version number and commit message as prompted, and wait for a while to complete the release.
+Then wait for a while to complete the release.
 
+### delete version
+
+```sh
+tag del [version number]
+```
 
 ## 如何使用？
 
@@ -30,7 +35,7 @@ Then enter the version number and commit message as prompted, and wait for a whi
 打开终端，输入并执行这一行命令即可：
 
 ```sh
-curl -s https://xaoxuu.com/install | sh -s release.sh
+curl -s https://xaoxuu.com/install | sh -s tag.sh
 ```
 
 ### 发布版本
@@ -38,7 +43,14 @@ curl -s https://xaoxuu.com/install | sh -s release.sh
 当您需要进行版本发布时，在git仓库中打开终端，输入：
 
 ```sh
-release
+tag 版本号 描述
 ```
 
-然后根据提示输入版本号、commit信息，稍等片刻即可完成发布。
+然后稍等片刻即可完成发布。
+
+
+### 删除版本
+
+```sh
+tag del 版本号
+```
