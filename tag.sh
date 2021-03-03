@@ -2,12 +2,11 @@
 # 脚本的文档
 DOCS='https://xaoxuu.com/wiki/tag.sh/'
 
-# release 1.0 msg   -- push 1.0
-# release d 1.0     -- delete 1.0
+# tag 1.0 msg   => add 1.0
+# tag del 1.0   => delete 1.0
 
 P1=$1
 P2=$2
-
 
 function add() {
 	tag=$1
@@ -17,37 +16,17 @@ function add() {
 		return
 	fi
 	if [ "$msg" == "" ];then
-		msg="new release"
+		msg="release: ${tag}"
 	fi
 
-	# 拉取最新代码
-	printf "\n\n> \033[32m%s\033[0m" 'git pull'
-	printf "\n"
-	git pull
-	# 发布
-	printf "\n\n> \033[32m%s\033[0m" 'git add --all'
-	printf "\n"
-	git add --all
-
-	printf "\n\n> \033[32m%s\033[0m" 'git commit -m'
-	printf " \033[35m%s\033[0m" ${msg}
-	printf "\n"
-	git commit -m "${msg}"
-
-	printf "\n\n> \033[32m%s\033[0m" 'git push origin'
-	printf "\n"
-	git push origin
-
-	printf "\n\n> \033[32m%s\033[0m" 'git tag'
-	printf " \033[35m%s\033[0m\n" ${tag}
-	git tag ${tag}
-
-	printf "\n\n> \033[32m%s\033[0m" 'git push origin'
-	printf " \033[35m%s\033[0m\n" ${tag}
-	git push origin ${tag}
-
-	# done
-	printf "\n\n> \033[32m%s\033[0m\n" 'Congratulations!'
+	git pull &&
+	git add --all &&
+	git commit -m "${msg}" &&
+	git push origin &&
+	git tag ${tag} &&
+	git push origin ${tag} &&
+  printf "\n\n> \033[32m%s\033[0m\n" 'Congratulations!' ||
+  printf "\n\n> \033[31m%s\033[0m\n" 'Operation failed.'
 
 }
 
@@ -68,7 +47,7 @@ function check() {
 		'')
 			read -p "请输入 tag version: " tag
 		;;
-		'-d'|'del')
+		'del')
 			case $P2 in
 				'') ;;
 				*) tag=$P2 ;;
