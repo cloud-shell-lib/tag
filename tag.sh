@@ -19,11 +19,11 @@ function add() {
 		msg="release: ${tag}"
 	fi
 
-	git pull &&
-	git add --all &&
-	git commit -m "${msg}" &&
+	git pull
+	git add --all
+	git commit -m "${msg}"
 	git push origin &&
-	git tag ${tag} &&
+	git tag ${tag}
 	git push origin ${tag} &&
   printf "\n\n> \033[32m%s\033[0m\n" 'Congratulations!' ||
   printf "\n\n> \033[31m%s\033[0m\n" 'Operation failed.'
