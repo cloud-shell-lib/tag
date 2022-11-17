@@ -1,6 +1,6 @@
 #!/bin/bash
 # 脚本的文档
-DOCS='https://xaoxuu.com/wiki/tag.sh/'
+DOCS='https://xaoxuu.com/wiki/cloud-shell/tag/'
 
 # tag 1.0 msg   => add 1.0
 # tag del 1.0   => delete 1.0
