@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # 脚本的文档
 DOCS='https://xaoxuu.com/wiki/cloud-shell/tag/'
 
@@ -8,14 +8,14 @@ DOCS='https://xaoxuu.com/wiki/cloud-shell/tag/'
 P1=$1
 P2=$2
 
-function add() {
+git_add() {
 	tag=$1
 	msg=$2
-	if [ "$tag" == "" ];then
+	if [ "$tag" = "" ];then
 		echo '请输入「tag 版本号 描述」来发布版本:'
 		return
 	fi
-	if [ "$msg" == "" ];then
+	if [ "$msg" = "" ];then
 		msg="release: ${tag}"
 	fi
 
@@ -30,9 +30,9 @@ function add() {
 
 }
 
-function del() {
+git_del() {
 	tag=$1
-	if [ "$tag" == "" ];then
+	if [ "$tag" = "" ];then
 		echo '请输入「tag del 版本号」来删除指定版本:'
 		return
 	fi
@@ -40,7 +40,7 @@ function del() {
 	git push origin :${tag}
 }
 
-function check() {
+check() {
 	tag=''
 	msg=''
 	case $P1 in
@@ -52,7 +52,7 @@ function check() {
 				'') ;;
 				*) tag=$P2 ;;
 			esac
-			del $tag
+			git_del $tag
 			return
 		;;
 		*) tag=$P1 ;;
@@ -63,7 +63,7 @@ function check() {
 		;;
 		*) msg=$P2 ;;
 	esac
-	add $tag $msg
+	git_add $tag $msg
 }
 
 case $P1 in

@@ -9,7 +9,7 @@
 Open a terminal, enter and execute this command:
 
 ```sh
-curl -s https://sh.xaox.cc/install | bash -s tag
+curl -s https://sh.xaox.cc/install | sh -s tag
 ```
 
 ### release version
@@ -35,7 +35,7 @@ tag del [version number]
 打开终端，输入并执行这一行命令即可：
 
 ```sh
-curl -s https://sh.xaox.cc/install | bash -s tag
+curl -s https://sh.xaox.cc/install | sh -s tag
 ```
 
 ### 发布版本
